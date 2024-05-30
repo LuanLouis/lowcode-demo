@@ -44,7 +44,17 @@ export const resetSchema = async (scenarioName: string = 'unknown') => {
   Message.success('成功重置页面');
 }
 
-const getLSName = (scenarioName: string, ns: string = 'projectSchema') => `${scenarioName}:${ns}`;
+let pageCode = window.lowcode.pageCode;
+
+
+const getLSName = (scenarioName: string, ns: string = 'projectSchema') => {
+  // return `${scenarioName}:${ns}`
+  
+  
+  return `${pageCode}:${ns}`
+
+  // return pageCode;
+};
 
 export const getProjectSchemaFromLocalStorage = async (scenarioName: string) => {
   if (!scenarioName) {
@@ -52,7 +62,8 @@ export const getProjectSchemaFromLocalStorage = async (scenarioName: string) => 
     return;
   }
 
-  let response = await axios.get("http://localhost:8080/api/page/detail",{params:{pageCode:window.lowcode.pageCode}});
+
+  let response = await axios.get("http://localhost:8080/api/page/detail",{params:{pageCode:pageCode}});
 
   console.log(response);
   let schema = response.data.schema || '{}';

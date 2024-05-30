@@ -21,7 +21,7 @@ const SaveSamplePlugin = (ctx: IPublicModelPluginContext) => {
         },
         content: (
           <Button onClick={() => saveSchema(scenarioName)}>
-            保存到本地
+            保存
           </Button>
         ),
       });
@@ -34,7 +34,7 @@ const SaveSamplePlugin = (ctx: IPublicModelPluginContext) => {
         },
         content: (
           <Button onClick={() => resetSchema(scenarioName)}>
-            重置页面
+            重置
           </Button>
         ),
       });

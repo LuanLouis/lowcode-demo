@@ -39,9 +39,18 @@
         'padding: 2px 1px; border-radius: 0 3px 3px 0; color: #fff; background: #42c02e; font-weight: bold;',
       );
 
+function getQueryString(name) {
+    // 假设当前网址为 http://example.com/?name=John&age=30
+    let urlString = window.location.href;
+    let url = new URL(urlString);
+    let queryParams = new URLSearchParams(url.search);
+    return queryParams.get(name);
+}
+
+
       window.lowcode = {
         appCode: 'flowable-lowcode',
-        pageCode: 'cce06d00-febc-4c54-bbf5-36f22588822e'
+        pageCode: getQueryString('pageCode') ||'defaultFormTODO'
       };
 
     </script>

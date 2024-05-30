@@ -14,10 +14,19 @@
     locale: 'zh-CN',
   };
 
-  window.lowcode = {
+  function getQueryString(name) {
+    // 假设当前网址为 http://example.com/?name=John&age=30
+    let urlString = window.location.href;
+    let url = new URL(urlString);
+    let queryParams = new URLSearchParams(url.search);
+    return queryParams.get(name);
+}
+
+
+      window.lowcode = {
         appCode: 'flowable-lowcode',
-        pageCode: 'cce06d00-febc-4c54-bbf5-36f22588822e'
-  };
+        pageCode: getQueryString('pageCode') ||'defaultFormTODO'
+      };
 </script>
 <script src="https://g.alicdn.com/code/lib/react/16.14.0/umd/react.production.min.js"></script>
 <script src="https://g.alicdn.com/code/lib/react-dom/16.14.0/umd/react-dom.production.min.js"></script>
